@@ -10,7 +10,7 @@ export default class App extends Component {
     render() {
         return (
             <div style={containerStyles}>
-                <Table></Table>
+                <Table playersPerTeam={[3, 2, 4]}/>
             </div>
         );
     }

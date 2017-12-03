@@ -1,25 +1,15 @@
-import React, {Component} from 'react'
+import React, { Component,  } from 'react';
+import PropTypes from 'prop-types';
+import Players from "./TableComponents/Players";
 
 const bodyStyle = {};
 
-const cellStyle = {
-    border: '2px solid dimgrey',
-    height: '100%',
-    width: '33.34%',
-    borderTop: 'white',
-    borderBottom: 'white',
-};
-const cellNullStyle = {
-    border: '2px solid dimgrey',
-    borderTop: 'white',
-    borderBottom: 'white',
-    width: '0',
-};
+
 const tableStyle = {
     borderSpacing: '2px',
-    height: '500px',
     width: '100%',
 };
+
 
 /*
 * teams: int
@@ -29,6 +19,7 @@ export default class Table extends Component {
 
 
     render() {
+
         return (
             <div>
                 <table style={tableStyle}>
@@ -36,12 +27,11 @@ export default class Table extends Component {
 
                     </thead>
                     <tbody style={bodyStyle}>
-                    <tr>
-                        <td style={cellStyle}>{}</td>
-                        <td style={cellStyle}>{}</td>
-                        <td style={cellNullStyle}>{}</td>
-                        <td style={cellStyle}>{}</td>
-                    </tr>
+                    {this.props.playersPerTeam.map(
+                        i =>
+                            <Players playersAmount={i} key={i.key}/>
+
+                    )}
                     </tbody>
 
                 </table>
@@ -49,3 +39,6 @@ export default class Table extends Component {
         );
     }
 }
+Table.propTypes = {
+    playersPerTeam: PropTypes.array.isRequired,
+};
